@@ -1,4 +1,4 @@
-package ScriptA;
+package myprojects.automation.assignment2.tests.ScriptA;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
