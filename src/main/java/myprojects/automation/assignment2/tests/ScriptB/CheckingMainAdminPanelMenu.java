@@ -6,28 +6,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static myprojects.automation.assignment2.BaseScript.doLogin;
+import static myprojects.automation.assignment2.BaseScript.getDriver;
+import static myprojects.automation.assignment2.utils.Properties.getBaseAdminUrl;
+
 public class CheckingMainAdminPanelMenu {
 
     public static void main(String[] args) {
 
         //open chrome browser
-        WebDriver driver = runChrome();
+        WebDriver driver = getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         try
         {
             //opening Admin panel page
-            driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
+            driver.get(getBaseAdminUrl());
 
-            //entering login
-            driver.findElement(By.id("email")).sendKeys("webinar.test@gmail.com");
-
-            //entering password
-            driver.findElement(By.id("passwd")).sendKeys("Xcg7299bnSmMuRLp9ITw");
-
-            //clicking on "Вход" button
-            driver.findElement(By.name("submitLogin")).click();
+            //Logining
+            doLogin(driver);
 
             //check page
             check(driver);
@@ -43,7 +41,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title = driver.findElement(By.cssSelector("#main-div > div.header-toolbar > h2")).getText();
-            System.out.print(title + "\n");
+            System.out.println(title);
 
             //refresh page
             driver.navigate().refresh();
@@ -63,7 +61,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title1 = driver.findElement(By.className("page-title")).getText();
-            System.out.print(title1 + "\n");
+            System.out.println(title1);
 
             //refresh page
             driver.navigate().refresh();
@@ -84,7 +82,7 @@ public class CheckingMainAdminPanelMenu {
 
                 //check page
                 String title2 = driver.findElement(By.className("page-title")).getText();
-                System.out.print(title2 + "\n");
+                System.out.println(title2);
 
                 //refresh page
                 driver.navigate().refresh();
@@ -104,7 +102,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title3 = driver.findElement(By.className("page-title")).getText();
-            System.out.print(title3 + "\n");
+            System.out.println(title3);
 
             //refresh page
             driver.navigate().refresh();
@@ -124,7 +122,7 @@ public class CheckingMainAdminPanelMenu {
 
                 //check page
                 String title4 = driver.findElement(By.cssSelector("#main-div > div.header-toolbar > h2")).getText();
-                System.out.print(title4 + "\n");
+                System.out.println(title4);
 
                 //refresh page
                 driver.navigate().refresh();
@@ -144,7 +142,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title5 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-            System.out.print(title5 + "\n");
+            System.out.println(title5);
 
             //refresh page
             driver.navigate().refresh();
@@ -164,7 +162,7 @@ public class CheckingMainAdminPanelMenu {
 
                 //check page
                 String title6 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-                System.out.print(title6 + "\n");
+                System.out.println(title6);
 
                 //refresh page
                 driver.navigate().refresh();
@@ -184,7 +182,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title7 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-            System.out.print(title7 + "\n");
+            System.out.println(title7);
 
             //refresh page
             driver.navigate().refresh();
@@ -204,7 +202,7 @@ public class CheckingMainAdminPanelMenu {
 
                 //check page
                 String title8 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-                System.out.print(title8 + "\n");
+                System.out.println(title8);
 
                 //refresh page
                 driver.navigate().refresh();
@@ -224,7 +222,7 @@ public class CheckingMainAdminPanelMenu {
 
             //check page
             String title9 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-            System.out.print(title9 + "\n");
+            System.out.println(title9);
 
             //refresh page
             driver.navigate().refresh();
@@ -244,7 +242,7 @@ public class CheckingMainAdminPanelMenu {
 
                 //check page
                 String title10 = driver.findElement(By.cssSelector("#content > div.bootstrap > div > ul > li.breadcrumb-container")).getText();
-                System.out.print(title10 + "\n");
+                System.out.println(title10);
 
                 //refresh page
                 driver.navigate().refresh();
@@ -269,16 +267,10 @@ public class CheckingMainAdminPanelMenu {
         driver.quit();
     }
 
-    public static WebDriver runChrome() {
-        String Browser = "C:\\Users\\User\\IdeaProjects\\Selenium\\src\\main\\resources\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", Browser);
-        return new ChromeDriver();
-    }
-
     public static void check(WebDriver driver) {
         //output title
         String title = driver.findElement(By.className("page-title")).getText();
-        System.out.print(title + "\n");
+        System.out.println(title);
 
         //refresh page
         driver.navigate().refresh();

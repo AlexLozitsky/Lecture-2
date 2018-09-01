@@ -9,28 +9,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static myprojects.automation.assignment2.BaseScript.doLogin;
+import static myprojects.automation.assignment2.BaseScript.getDriver;
+import static myprojects.automation.assignment2.utils.Properties.getBaseAdminUrl;
+
 public class CheckingMainAdminPanelMenuWithLoop {
 
     public static void main(String[] args) {
 
         //open chrome browser
-        WebDriver driver = runChrome();
+        WebDriver driver = getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         try
         {
             //opening Admin panel page
-            driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/");
+            driver.get(getBaseAdminUrl());
 
-            //entering login
-            driver.findElement(By.id("email")).sendKeys("webinar.test@gmail.com");
-
-            //entering password
-            driver.findElement(By.id("passwd")).sendKeys("Xcg7299bnSmMuRLp9ITw");
-
-            //clicking on "Вход" button
-            driver.findElement(By.name("submitLogin")).click();
+            //Logining
+            doLogin(driver);
 
             boolean breakIt = true;
             while (true) {
@@ -46,7 +44,7 @@ public class CheckingMainAdminPanelMenuWithLoop {
                     {
                         //output title
                         String title = driver.findElement(By.className("breadcrumb-current")).getText();
-                        System.out.print(title);
+                        System.out.println(title);
 
                         //refresh page
                         driver.navigate().refresh();
@@ -93,10 +91,9 @@ public class CheckingMainAdminPanelMenuWithLoop {
         driver.quit();
     }
 
-    public static WebDriver runChrome() {
-        String Browser = "C:\\Users\\User\\IdeaProjects\\Selenium\\src\\main\\resources\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", Browser);
-        return new ChromeDriver();
+    public static WebDriver menu() {
+        String[] menu = {};
+        return menu();
     }
 
 }
