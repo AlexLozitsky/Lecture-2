@@ -1,6 +1,7 @@
 package myprojects.automation.assignment3;
 
 import myprojects.automation.assignment3.utils.Properties;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -40,5 +41,28 @@ public abstract class BaseScript {
 
         // TODO configure browser window (set timeouts, browser pindow position) and connect loggers.
         throw new UnsupportedOperationException("Method doesn't return configured WebDriver instance");
+    }
+    /*script for login*/
+    public static void doLogin(WebDriver driver) {
+        //entering login
+        driver.findElement(By.id("email")).sendKeys("webinar.test@gmail.com");
+
+        //entering password
+        driver.findElement(By.id("passwd")).sendKeys("Xcg7299bnSmMuRLp9ITw");
+
+        //clicking on "Вход" button
+        driver.findElement(By.name("submitLogin")).click();
+    }
+    public static String nameCategory() {
+        //generator for location
+        String[] WordsOne = {"new", "london", "Martin", "germany", "USA", "Canada", "Bug",
+                "China", "Cadi", "Brazil", "Ireland", "UK", "Ukraine",
+                "Japan", "Austria", "Australia", "California", "Lamb", "Mase"};
+        //finding how many words in String
+        int oneLength = WordsOne.length;
+        //random numbers
+        int ran1=(int) (Math.random() *oneLength);
+        //building random Phrase
+        return WordsOne[ran1];
     }
 }
